@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body{
+			background-image:url("https://cdn.cssauthor.com/wp-content/uploads/2015/01/Free-Wood-Texture1.jpg");
+		}
+		.tabuleiro{
+			margin-left: 366.5px;
+			width: 600px;
+			height: 600px;
+			box-shadow: 8px 8px 10px #463028;
+		}
+		.posicao{
+			width: 75px;
+			height: 75px;
+			float: left;
+			background-color: #ddd;
+		}
+		.p1{
+			background-color: rgb(10, 10, 10);
+		}
+		.p2{
+			background-color: white;
+		}
+		.branca{
+			width: 42px;
+			height: 42px;
+			background-color: #BABABA;
+			border: solid 3px white;
+			border-radius: 50%;
+			position: relative;
+			left: 13px;
+			top: 13px;
+		}
+		.preta{
+			width: 42px;
+			height: 42px;
+			background-color: rgb(20, 20, 20);
+			border: solid 3px #333;
+			border-radius: 50%;
+			position: relative;
+			left: 13px;
+			top: 13px;
+		}
+	</style>
+	<title>Jogo de Damas</title>
+</head>
+<body>
+	<div class="tabuleiro">
+		<div pos="0" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="1" class="posicao p2"></div>
+		<div pos="2" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="3" class="posicao p2"></div>
+		<div pos="4" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="5" class="posicao p2"></div>
+		<div pos="6" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="7" class="posicao p2"></div>
+		<div pos="8" class="posicao p2"></div>
+		<div pos="9" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="10" class="posicao p2"></div>
+		<div pos="11" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="12" class="posicao p2"></div>
+		<div pos="13" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="14" class="posicao p2"></div>
+		<div pos="15" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="16" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="17" class="posicao p2"></div>
+		<div pos="18" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="19" class="posicao p2"></div>
+		<div pos="20" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="21" class="posicao p2"></div>
+		<div pos="22" class="posicao p1 l1"><div class="branca"></div></div>
+		<div pos="23" class="posicao p2"></div>
+		<div pos="24" class="posicao p2"></div>
+		<div pos="25" class="posicao p1"></div>
+		<div pos="26" class="posicao p2"></div>
+		<div pos="27" class="posicao p1"></div>
+		<div pos="28" class="posicao p2"></div>
+		<div pos="29" class="posicao p1"></div>
+		<div pos="30" class="posicao p2"></div>
+		<div pos="31" class="posicao p1"></div>
+		<div pos="32" class="posicao p1"></div>
+		<div pos="33" class="posicao p2"></div>
+		<div pos="34" class="posicao p1"></div>
+		<div pos="35" class="posicao p2"></div>
+		<div pos="36" class="posicao p1"></div>
+		<div pos="37" class="posicao p2"></div>
+		<div pos="38" class="posicao p1"></div>
+		<div pos="39" class="posicao p2"></div>
+		<div pos="40" class="posicao p2"></div>
+		<div pos="41" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="42" class="posicao p2"></div>
+		<div pos="43" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="44" class="posicao p2"></div>
+		<div pos="45" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="46" class="posicao p2"></div>
+		<div pos="47" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="48" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="49" class="posicao p2"></div>
+		<div pos="50" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="51" class="posicao p2"></div>
+		<div pos="52" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="53" class="posicao p2"></div>
+		<div pos="54" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="55" class="posicao p2"></div>
+		<div pos="56" class="posicao p2"></div>
+		<div pos="57" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="58" class="posicao p2"></div>
+		<div pos="59" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="60" class="posicao p2"></div>
+		<div pos="61" class="posicao p1 l2"><div class="preta"></div></div>
+		<div pos="62" class="posicao p2"></div>
+		<div pos="63" class="posicao p1 l2"><div class="preta"></div></div>
+	</div>
+	<script type="text/javascript">
+		var posicoes = document.getElementsByClassName("posicao");
+		var pretas = document.getElementsByClassName("preta");
+		var brancas = document.getElementsByClassName("branca");
+		var peca;
+
+		for(let i = 0; i < brancas.length; i++){
+			brancas[i].addEventListener("click",function(){
+				limpar();
+				peca = this;
+				jgds();
+			});
+
+			pretas[i].addEventListener("click",function(){
+				limpar();
+				peca = this;
+				jgds();
+			});
+		}
+
+		function jgds(){
+			var alocado = parseInt(peca.parentElement.getAttribute("pos"));
+			//direita e baixo	
+			var p1 = alocado;
+			while(proximaCasa(p1,1)){
+				p1 = p1 + 9;
+				if(qualPeca(p1)=="vazio"){
+					if(peca.classList.value=="branca"){
+						posicoes[p1].style.backgroundColor="green";
+						if(proximaCasa(p1,1)){
+							if(qualPeca(p1+9)=="vazio"){
+								posicoes[p1].style.backgroundColor="green";
+								p1=100;
+							}
+						} else {
+							p1 = 100;
+						}
+					}
+				} else if(qualPeca(p1)=="diferente"){
+					if(proximaCasa(p1,1) && posicoes[alocado+9].childElementCount!=0){
+						if(qualPeca(p1+9)=="vazio"){
+							posicoes[p1].style.backgroundColor="darkgreen";
+							posicoes[p1+9].style.backgroundColor="green";
+						} else {
+							p1=100;
+						}
+					} else{
+						p1=100;
+					}
+				} else {
+					p1=100;
+				}
+			}
+			//esquerda e baixo
+			var p2 = alocado;
+			while(proximaCasa(p2,2)){
+				p2 = p2 + 7;
+				if(qualPeca(p2)=="vazio"){
+					if(peca.classList.value=="branca"){
+						posicoes[p2].style.backgroundColor="green";
+						if(proximaCasa(p2,2)){
+							if(qualPeca(p2+7)=="vazio"){
+								posicoes[p2].style.backgroundColor="green";
+								p2=100;
+							}
+						} else {
+							p2 = 100;
+						}
+					}
+				} else if(qualPeca(p2)=="diferente"){
+					if(proximaCasa(p2,2) && posicoes[alocado+7].childElementCount!=0){
+						if(qualPeca(p2+7)=="vazio"){
+							posicoes[p2].style.backgroundColor="darkgreen";
+							posicoes[p2+7].style.backgroundColor="green";
+						} else {
+							p2=100;
+						}
+					} else{
+						p2=100;
+					}
+				} else {
+					p2=100;
+				}
+			}
+			//esquerda e cima
+			var p3 = alocado;
+			while(proximaCasa(p3,3)){
+				p3 = p3 - 9;
+				if(qualPeca(p3)=="vazio"){
+					if(peca.classList.value=="preta"){
+						posicoes[p3].style.backgroundColor="green";
+						if(proximaCasa(p3,3)){
+							if(qualPeca(p3-9)=="vazio"){
+								posicoes[p3].style.backgroundColor="green";
+								p3=0;
+							}
+						} else {
+							p3 = 0;
+						}
+					}
+				} else if(qualPeca(p3)=="diferente"){
+					if(proximaCasa(p3,3) && posicoes[alocado-9].childElementCount!=0){
+						if(qualPeca(p3-9)=="vazio"){
+							posicoes[p3].style.backgroundColor="darkgreen";
+							posicoes[p3-9].style.backgroundColor="green";
+						} else {
+							p3=0;
+						}
+					} else{
+						p3=0;
+					}
+				} else {
+					p3=0;
+				}
+			}
+			//direita e cima
+			var p4 = alocado;
+			while(proximaCasa(p4,4)){
+				p4 = p4 - 7;
+				if(qualPeca(p4)=="vazio"){
+					if(peca.classList.value=="preta"){
+						posicoes[p4].style.backgroundColor="green";
+						if(proximaCasa(p4,4)){
+							if(qualPeca(p4-7)=="vazio"){
+								posicoes[p4].style.backgroundColor="green";
+								p4=0;
+							}
+						} else {
+							p4=0;
+						}
+					}	
+				} else if(qualPeca(p4)=="diferente"){
+					if(proximaCasa(p4,4)&& posicoes[alocado-7].childElementCount!=0){
+						if(qualPeca(p4-7)=="vazio"){
+							posicoes[p4].style.backgroundColor="darkgreen";
+							posicoes[p4-7].style.backgroundColor="green";
+						} else {
+							p4=0;
+						}
+					} else{
+						p4=0;
+					}
+				} else {
+					p4=0;
+				}
+			}
+			function qualPeca(lugar){
+				if(!posicoes[lugar].classList.contains("p2")){
+					if(posicoes[lugar].childElementCount != 1){
+						return "vazio";
+					} else if (posicoes[lugar].children[0].classList.value!=peca.classList.value){
+						return "diferente";
+					} else{
+						return "mesma";
+					}
+				} else {
+					return "b";
+				}
+			}	
+	}
+
+	for(let i=0;i<posicoes.length;i++){
+		posicoes[i].addEventListener("click",function(){
+			if(posicoes[i].style.backgroundColor=="green"){
+				var ini = parseInt(peca.parentElement.getAttribute("pos"));;
+				var fim = i;
+				var direcao = cordenadas(ini,fim);
+				posicoes[i].appendChild(peca);
+				for(let x = ini;x!=fim;x+=direcao){
+					if(posicoes[x].style.backgroundColor=="darkgreen"){
+						posicoes[x].removeChild(posicoes[x].children[0]);
+					}
+				}
+				limpar();
+			}
+		});
+	}
+	function cordenadas(ini,fim){
+		var comp = ini-fim;
+		var quantidade;
+		var direcao;
+		if(comp>0){
+			if(comp%7==0){
+				quantidade= comp/7;
+				direcao = -7;
+				
+			} else if(comp%9==0){
+				quantidade= comp/9;
+				direcao = -9;
+			}
+		} else if(ini-fim<0){
+			if(comp%7==0){
+				quantidade= comp/-7;
+				direcao = 7;
+			} else if(comp%9==0){
+				quantidade= comp/-9;
+				direcao = 9;
+			}
+		}
+		return direcao;
+	}
+
+	function proximaCasa(valor, acres){
+		if(acres==1){
+			return valor+9<=63;
+		}
+		if(acres==2){
+			return valor+7<=63;
+		}
+		if(acres==3){
+			return valor-9>=0;
+		}
+		if(acres==4){
+			return valor-7>=0;
+		}
+	}
+	
+	function limpar(){
+		for(let y = 0; y < posicoes.length;y++){
+			if(posicoes[y].style.backgroundColor=="green"||posicoes[y].style.backgroundColor=="darkgreen"){
+				posicoes[y].style.backgroundColor="black";
+			}
+		}
+	}
+		
+			//erros:quadrados brancos sendo pintados.Resolução: criar uma comparação(Se posicao + valor = quadrado branco, então nao pintar)--
+			//prestar atenção nas posições que passam do limite do tabuleiro.--
+			//corrigir erro de peças trocando valores. exemplo peça branca[0] fica a frente da branca[1] e a branca[0] passa a ser branca[1]
+			//obs:criar uma função que mova a peça de acordo com as possibilidades marcadas em verde. 
+	</script>
+</body>
+</html>
